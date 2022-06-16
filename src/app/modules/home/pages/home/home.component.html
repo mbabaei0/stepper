@@ -1,0 +1,26 @@
+<div class="layout" *ngIf="{ activeIndex: activeIndex$ | async } as ctx">
+  <p-card>
+    <p-steps [model]="steps" [activeIndex]="ctx.activeIndex!"></p-steps>
+  </p-card>
+  <p-divider align="left" >
+    <b>{{steps[ctx.activeIndex!]?.label}}</b>
+  </p-divider>
+  <p-card>
+    <ng-container [ngSwitch]="ctx.activeIndex">
+      <div *ngSwitchCase="0">
+        <app-step-image-upload></app-step-image-upload>
+      </div>
+      <div *ngSwitchCase="1">
+        <app-step-form></app-step-form>
+      </div>
+      <div *ngSwitchCase="2">
+        <app-step-tabel></app-step-tabel>
+      </div>
+      <div *ngSwitchDefault>
+        <app-step-image-upload></app-step-image-upload>
+      </div>
+    </ng-container>
+  </p-card>
+  <button (click)="inc()">inccc</button>
+  <button (click)="dec()">deccc</button>
+</div>
