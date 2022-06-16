@@ -8,19 +8,21 @@
   <p-card>
     <ng-container [ngSwitch]="ctx.activeIndex">
       <div *ngSwitchCase="0">
-        <app-step-image-upload></app-step-image-upload>
+        <app-step-image-upload (fileUploaded)="onFileUploaded($event)"></app-step-image-upload>
       </div>
       <div *ngSwitchCase="1">
-        <app-step-form></app-step-form>
+        <app-step-form (submitted)="onFormSubmitted($event)"></app-step-form>
       </div>
       <div *ngSwitchCase="2">
-        <app-step-tabel></app-step-tabel>
+        <app-step-tabel (selected)="onUserSelected($event)"></app-step-tabel>
+      </div>
+      <div *ngSwitchCase="3">
+        <app-step-result></app-step-result>
       </div>
       <div *ngSwitchDefault>
-        <app-step-image-upload></app-step-image-upload>
+        Somthing Went wrong Here :(
       </div>
     </ng-container>
   </p-card>
-  <button (click)="inc()">inccc</button>
-  <button (click)="dec()">deccc</button>
+
 </div>

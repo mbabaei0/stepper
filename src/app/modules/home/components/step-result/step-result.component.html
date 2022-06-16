@@ -1,0 +1,31 @@
+<div *ngIf="result$ | async as res">
+
+  <img width="200" [src]="$any(res.image).objectURL?.changingThisBreaksApplicationSecurity | safe:'url'" alt="">
+
+  <p-divider align="left">
+    <b>Form result</b>
+  </p-divider>
+
+  <div *ngFor="let item of res.form | keyvalue">
+    {{ item.key }} :
+    &nbsp;
+    <strong [ngSwitch]="item.key">
+      <div *ngSwitchCase="'validDate'">{{ item.value | date :'short' }}</div>
+      <div *ngSwitchCase="'status'">{{ $any(item.value).key }}</div>
+      <div *ngSwitchDefault>{{ item.value }}</div>
+    </strong>
+    <br>
+  </div>
+  <p-divider align="left">
+    <b>Selected User</b>
+  </p-divider>
+  <div *ngFor="let item of res.user | keyvalue">
+    {{ item.key }} :
+    &nbsp;
+    <strong [ngSwitch]="item.key">
+      <div *ngSwitchCase="'birth'">{{ item.value | date :'short' }}</div>
+      <div *ngSwitchDefault>{{ item.value }}</div>
+    </strong>
+    <br>
+  </div>
+</div>

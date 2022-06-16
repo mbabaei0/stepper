@@ -9,6 +9,9 @@ import { StepFormComponent } from './components/step-form/step-form.component';
 import { StepTabelComponent } from './components/step-tabel/step-tabel.component';
 import { StoreModule } from '@ngrx/store';
 import { homeReducer, homeStoreFeatureKey } from './state/home.reducer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StepResultComponent } from './components/step-result/step-result.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 @NgModule({
@@ -16,12 +19,16 @@ import { homeReducer, homeStoreFeatureKey } from './state/home.reducer';
     HomeComponent,
     StepImageUploadComponent,
     StepFormComponent,
-    StepTabelComponent
+    StepTabelComponent,
+    StepResultComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     PrimeShareModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forFeature(homeStoreFeatureKey, homeReducer)
   ]
 })

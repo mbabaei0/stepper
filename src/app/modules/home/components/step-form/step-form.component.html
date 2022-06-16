@@ -1,1 +1,30 @@
-<p>step-form works!</p>
+<form [formGroup]="form">
+  <div class="group">
+    <label>Valid Amount </label>
+    <p-inputNumber
+      formControlName="validAmount"
+      placeholder="Enter valid Amount"
+    ></p-inputNumber>
+  </div>
+  <div class="group">
+    <label>Valid Date </label>
+    <p-calendar [minDate]="minDate" [maxDate]="maxDate" formControlName="validDate"></p-calendar>
+  </div>
+  <div class="group">
+    <label>Status </label>
+    <p-dropdown [options]="USER_STAT | keyvalue" formControlName="status" optionLabel="key">
+    <ng-template let-stat pTemplate="item">
+      <div>{{stat.key}}</div>
+    </ng-template>
+    </p-dropdown>
+  </div>
+  <div class="group">
+    <label>Source of found </label>
+    <p-inputMask formControlName="sourceOfFound" characterPattern="[A-Za-z]"  mask="aaaaa"></p-inputMask>
+  </div>
+  <div class="group">
+    <button (click)="onSave()" [disabled]="!form.valid" pButton type="button" label="Submitt" ></button>
+  </div>
+
+
+</form>

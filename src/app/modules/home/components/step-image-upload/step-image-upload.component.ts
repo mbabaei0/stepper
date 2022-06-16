@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-step-image-upload',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepImageUploadComponent implements OnInit {
 
+  @Output() fileUploaded = new EventEmitter<File>()
   constructor() { }
 
   ngOnInit(): void {
   }
+  myUploader(ev:any){
+    this.fileUploaded.emit(ev.files[0])
+  }
+
 
 }
